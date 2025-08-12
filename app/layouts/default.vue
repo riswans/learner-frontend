@@ -9,20 +9,13 @@ const toggleSidebar = () => {
 </script>
 
 <template>
-    <!-- <div class="flex h-screen bg-gray-100">
-        <HeadersNavbarAdmin :isOpen="isSidebarOpen" @toggle-sidebar="toggleSidebar" />
+    <div class="flex h-screen bg-gray-100">
         <SidebarsAdminAside :isOpen="isSidebarOpen" />
-        <main class="flex-1 transition-all duration-300 overflow-y-auto" :class="{
-            'ml-64': isSidebarOpen,
-            'ml-0': !isSidebarOpen,
-        }">
-            <div class="px-6 py-8 mt-16">
-                <slot />
-            </div>
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <HeadersNavbarAdmin :isOpen="isSidebarOpen" @toggle-sidebar="toggleSidebar" />
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200 p-6">
+            <slot />
         </main>
-    </div> -->
-    <div class="flex min-h-screen bg-gray-100">
-        <SidebarsAdminAside :isOpen="isSidebarOpen" />
-   
+    </div>
     </div>
 </template>
