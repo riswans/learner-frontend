@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useApps } from '~/stores/app';
 
 const emit = defineEmits(['toggle-sidebar'])
 const props = defineProps<{
@@ -19,10 +18,10 @@ const toggleDarkMode = () => {
 </script>
 
 <template>
-    <header
-        class="flex-shrink-0 flex justify-between items-center bg-white dark:bg-gray-800 p-4 shadow-md transition-colors duration-200 border-b-1 border-gray-300">
+    <header :class="useAppStore().bgDashbord"
+        class="flex-shrink-0 flex justify-between items-center p-4 shadow-md transition-colors duration-200 border-b-1 border-gray-300">
         <div class="relative w-full max-w-lg mx-4 md:mx-auto">
-            <button @click="emit('toggle-sidebar')" class="p-2 mr-2 text-white hover:bg-blue-800 rounded-lg">
+            <button @click="emit('toggle-sidebar')" class="p-2 mr-2 hover:bg-blue-800 rounded-lg">
                 <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
@@ -33,9 +32,9 @@ const toggleDarkMode = () => {
 
         <!-- Ikon dan Profil Pengguna -->
         <div class="flex flex-1 justify-end space-x-4">
-            <button @click="useApps().fetchMessages(!useApps().themes)"
+            <button @click="useAppStore().themes = !useAppStore().themes"
                 class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200">
-                <svg v-if="useApps().themes" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-100" viewBox="0 0 24 24"
+                <svg v-if="useAppStore().themes" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24"
                     fill="currentColor" stroke="none">
                     <path
                         d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.747 5.747a.75.75 0 011.061 0l1.59 1.59a.75.75 0 01-1.061 1.06l-1.59-1.59a.75.75 0 010-1.061zM2.25 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H3a.75.75 0 01-.75-.75zM7.747 18.253a.75.75 0 010-1.061l1.59-1.59a.75.75 0 111.061 1.061l-1.59 1.59a.75.75 0 01-1.06 0zM12 17.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM18.253 17.253a.75.75 0 011.061 0l1.59 1.59a.75.75 0 11-1.061 1.061l-1.59-1.59a.75.75 0 010-1.06zM20.25 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5h-2.25a.75.75 0 01-.75-.75zM17.253 7.747a.75.75 0 011.061 0l1.59 1.59a.75.75 0 01-1.061 1.061l-1.59-1.59a.75.75 0 010-1.061z" />
